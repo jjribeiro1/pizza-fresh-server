@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateTableDto } from './create-table-dto';
+import { Table } from './entities/table.entity';
 
 @Injectable()
 export class TableService {
@@ -7,5 +9,10 @@ export class TableService {
 
   findAll() {
     return this.prisma.table.findMany();
+  }
+
+  create(dto: CreateTableDto) {
+    const data: Table = { ...dto };
+    return this.prisma.table.create({ data });
   }
 }
