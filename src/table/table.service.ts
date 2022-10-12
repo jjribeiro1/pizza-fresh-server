@@ -4,9 +4,9 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateTableDto } from './create-table-dto';
+import { CreateTableDto } from './dto/create-table-dto';
 import { Table } from './entities/table.entity';
-import { UpdateTableDto } from './update-table-dto';
+import { UpdateTableDto } from './dto/update-table-dto';
 
 @Injectable()
 export class TableService {
