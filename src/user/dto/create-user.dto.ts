@@ -20,11 +20,11 @@ export class CreateUserDto {
   })
   password: string;
 
-  @ApiProperty({
-    description: 'A confirmação da senha deve ser igual a senha',
-    example: 'Abcd@123@',
-  })
-  confirmPassword: string;
+  // @ApiProperty({
+  //   description: 'A confirmação da senha deve ser igual a senha',
+  //   example: 'Abcd@123@',
+  // })
+  // confirmPassword: string;
 
   @IsString()
   @ApiProperty({
