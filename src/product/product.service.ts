@@ -30,17 +30,17 @@ export class ProductService {
     );
   }
 
+  create(dto: CreateProductDto): Promise<Product> {
+    const data: Product = { ...dto };
+    return this.prisma.product.create({ data }).catch(this.handleError);
+  }
+
   findAll(): Promise<Product[]> {
     return this.prisma.product.findMany();
   }
 
   async findOne(id: string): Promise<Product> {
     return this.findById(id);
-  }
-
-  create(dto: CreateProductDto): Promise<Product> {
-    const data: Product = { ...dto };
-    return this.prisma.product.create({ data }).catch(this.handleError);
   }
 
   async update(id: string, dto: UpdateProductDto): Promise<Product> {

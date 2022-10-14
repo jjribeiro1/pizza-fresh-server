@@ -12,7 +12,6 @@ import {
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateProductDto } from './dto/create-product-dto';
 import { UpdateProductDto } from './dto/update-product-dto';
-import { Product } from './entities/product.entity';
 import { ProductService } from './product.service';
 
 @ApiTags('product')
@@ -20,42 +19,39 @@ import { ProductService } from './product.service';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Get()
-  @ApiOperation({
-    summary: 'Listar todos os produtos',
-  })
-  findAll(): Promise<Product[]> {
-    return this.productService.findAll();
-  }
-
-  @Get('/:id')
-  @ApiOperation({
-    summary: 'Buscar um produto por id',
-  })
-  findOne(@Param('id') id: string): Promise<Product> {
-    return this.productService.findOne(id);
-  }
-
   @Post()
   @ApiOperation({
     summary: 'Criar um produto',
   })
-  create(@Body() dto: CreateProductDto): Promise<Product> {
+  create(@Body() dto: CreateProductDto) {
     return this.productService.create(dto);
   }
 
-  @Patch('/:id')
+  @Get()
+  @ApiOperation({
+    summary: 'Listar todos os produtos',
+  })
+  findAll() {
+    return this.productService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({
+    summary: 'Buscar um produto por id',
+  })
+  findOne(@Param('id') id: string) {
+    return this.productService.findOne(id);
+  }
+
+  @Patch(':id')
   @ApiOperation({
     summary: 'Atualizar um produto por id',
   })
-  update(
-    @Param('id') id: string,
-    @Body() dto: UpdateProductDto,
-  ): Promise<Product> {
+  update(@Param('id') id: string, @Body() dto: UpdateProductDto) {
     return this.productService.update(id, dto);
   }
 
-  @Delete('/:id')
+  @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
     summary: 'Deletar um produto por id',

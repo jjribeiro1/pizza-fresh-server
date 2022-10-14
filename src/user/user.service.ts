@@ -34,17 +34,17 @@ export class UserService {
     );
   }
 
+  create(dto: CreateUserDto): Promise<User> {
+    const data: User = { ...dto };
+    return this.prisma.user.create({ data }).catch(this.handleError);
+  }
+
   findAll(): Promise<User[]> {
     return this.prisma.user.findMany();
   }
 
   async findOne(id: string): Promise<User> {
     return this.findById(id);
-  }
-
-  create(dto: CreateUserDto): Promise<User> {
-    const data: User = { ...dto };
-    return this.prisma.user.create({ data }).catch(this.handleError);
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
