@@ -7,11 +7,12 @@ export class CreateProductDto {
     description: 'nome do produto',
     example: 'Pizza portuguesa',
   })
-  title: string;
+  name: string;
 
   @IsString()
   @ApiProperty({
     description: 'breve descrição sobre o produto',
+    example: 'Deliciosa pizza portuguesa com massa fina',
   })
   description: string;
 
