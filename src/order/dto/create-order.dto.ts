@@ -5,7 +5,7 @@ export class CreateOrderDto {
   @IsUUID()
   @ApiProperty({
     description: 'ID do usuário que está criando o pedido',
-    example: '8c90e568-df97-40c2-9b6b-3eee01a06a95',
+    example: '15129db1-06cd-4e33-9b8e-43f36203b82d',
   })
   userId: string;
 
@@ -21,8 +21,8 @@ export class CreateOrderDto {
   @ApiProperty({
     description: 'Lista de ID dos produtos que estão no pedido',
     example: [
-      '4413150a-cb42-4ae3-b39e-90f04b2817cc',
-      'c713619c-327e-44f2-984e-148861125897',
+      '2ed88c7a-57f5-4735-9364-e1267e17d72d',
+      'f35cac2e-a016-4423-bf25-e876ed101b93',
     ],
   })
   products: string[];
